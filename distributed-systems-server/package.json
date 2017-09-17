@@ -1,0 +1,36 @@
+{
+  "name": "distributed-systems-server",
+  "version": "1.0.0",
+  "description": "A backend for laboratory work on distributed systems",
+  "main": "index.js",
+  "scripts": {
+    "test": "ENV=testing mocha ./**/*.spec.js",
+    "debugtest": "ENV=testing mocha debug ./**/*.spec.js",
+    "devrun": "ENV=development nodemon $NODE_DEBUG_OPTION .",
+    "run": "nodemon ."
+  },
+  "keywords": [],
+  "author": "Tuktarov Renat",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "cookie-parser": "^1.4.3",
+    "cors": "^2.8.4",
+    "express": "^4.15.4",
+    "knex": "^0.13.0",
+    "moment": "^2.18.1",
+    "morgan": "^1.8.2",
+    "pg": "^6.4.2",
+    "pg-hstore": "^2.3.2",
+    "protobufjs": "^6.8.0",
+    "request": "^2.81.0",
+    "sqlite3": "^3.1.11",
+    "winston": "^2.3.1"
+  },
+  "devDependencies": {
+    "chai": "^4.1.1",
+    "chai-http": "^3.0.0",
+    "mocha": "^3.5.0",
+    "nodemon": "^1.12.0"
+  }
+}
