@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+message Result {
+    uint32 code = 1;
+    string message = 2;
+}
+
+message Task {
+    uint32 id = 1;
+    string label = 2;
+    uint32 done = 3;
+}
+
+message Tasks {
+    repeated Task tasks = 1;
+}

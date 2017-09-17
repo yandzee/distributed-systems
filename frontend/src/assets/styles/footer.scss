@@ -1,0 +1,59 @@
+@import "global.scss";
+@import "vars.scss";
+
+footer {
+  z-index: 1000;
+  width: 100%;
+  height: $footer-height;
+  @include mobile {
+    height: $mobile-footer-height;
+  }
+  background: linear-gradient(to top, $footer-color, $lighten-footer);
+  // box-shadow: 0 0px 20px -5px;
+
+  .logo { }
+
+  * {
+    color: $dark-text-color;
+  }
+}
+
+footer .narrowed {
+  padding: 0 $default-padding 0 $default-padding;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+footer .elems {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  @include mobile {
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+  }
+}
+
+footer .links {
+  display: flex;
+  flex-direction: row;
+  > div {
+    padding: 10px;
+  }
+
+  @include mobile {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    position: relative;
+    top: $footer-height;
+    background: $footer-color;
+  }
+}

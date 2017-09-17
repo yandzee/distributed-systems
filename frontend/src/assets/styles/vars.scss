@@ -1,0 +1,45 @@
+// colors
+$darkest: #393E41;
+$gray: #D3D0CB;
+$lightgray: #E7E5DF;
+$lightgreen: #44BBA4;
+$yellow: #E7BB41;
+
+$background-color: $lightgray;
+$lighten-background: lighten($background-color, 40%);
+
+$header-color: $lightgreen;
+$lighten-header: lighten($header-color, 10%);
+
+$footer-color: $gray;
+$lighten-footer: lighten($footer-color, 10%);
+
+$dark-text-color: $darkest;
+$lighten-dark-text: lighten($dark-text-color, 40%);
+
+$light-text-color: white;
+
+// sizes
+$small-screen: 460px;
+$default-padding: 20px;
+$padding-set: 0 $default-padding 0 $default-padding;
+
+$big-size: 48px;
+$mid-size: 38px;
+$small-size: 28px;
+$xsmall-size: 18px;
+$xxsmall-size: 8px;
+
+$header-height: 80px;
+$mobile-header-height: 70px;
+
+$footer-height: 80px;
+$mobile-footer-height: 70px;
+
+
+// mixins
+@mixin mobile {
+  @media screen and (max-width: $small-screen) {
+    @content;
+  }
+}

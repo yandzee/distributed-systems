@@ -34,10 +34,12 @@ class Storage {
 
   async setupSchemes() {
     const schema = this.db.schema.withSchema('public');
-    let v = schema.createTable('tasks', table => {
+    await schema.dropTableIfExists('tasks');
+    await schema.createTableIfNotExists('tasks', table => {
       table.increments();
-      table.string('name');
+      table.string('label');
       table.boolean('done');
+      table.timestamps();
     });
   }
 }

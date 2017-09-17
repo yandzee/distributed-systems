@@ -6,7 +6,6 @@ const express = require('express');
 const cors = require('cors');
 const http = require('http');
 const morgan = require('morgan');
-const protobuf  = require('protobufjs');
 const Router = express.Router;
 
 const logger = require('./logger')();
@@ -16,12 +15,10 @@ class ApiServer {
   constructor(app, cfg) {
     this.storage = app.storage;
     this.cfg = cfg;
-    this.protobuf = null;
     this.eapp = null;  // Express app.
   }
 
   async up() {
-    this.protobuf = await this.setupProtoBufSchemes();
     this.eapp = express();
     this.middlewares();
     this.server = http.createServer(this.eapp);
@@ -38,41 +35,27 @@ class ApiServer {
     await this.server.close();
   }
 
-  async setupProtoBufSchemes() {
-    logger.info('server: retrieving protobuf stat schemes');
-    return await this.setupSchemes();
-  }
-
-  async setupSchemes() {
-    const protoPath = `${__dirname}/schemes/protobuf/schemes.proto`;
-    const schemes = await protobuf.load(protoPath);
-
-    const Result = schemes.lookupType('Result');
-
-    return { Result };
-  }
-
   routes() {
     this.routers().map(({ path, routerFn }) => {
       logger.debug(`server: setting up router for ${path}`);
       const router = new Router();
-      routerFn(this, router, this.protobuf);
+      routerFn(this, router);
       this.eapp.use(path, router);
     });
   }
 
   routers() {
-    const rootRouter = require('./routers/root');
+    const tasksRouter = require('./routers/tasks');
 
     return [{
-      path: '/',
-      routerFn: rootRouter
+      path: '/tasks',
+      routerFn: tasksRouter
     }];
   }
 
   middlewares() {
     const _cors = cors({
-      origin: new RegExp('localhost'),
+      origin: new RegExp('.*'),
       credentials: true
     });
 

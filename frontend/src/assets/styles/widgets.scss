@@ -1,0 +1,29 @@
+@import "vars.scss";
+
+$small-padding: 6px 10px 6px 10px;
+$big-padding: 20px 35px 20px 35px;
+$mobile-big-padding: 15px 25px 15px 25px;
+
+.btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  width: 100%;
+
+  padding: $small-padding;
+  border-radius: 2px;
+
+  background: $header-color;
+  box-shadow: 0 0 10px 0px rgba(0,0,0, 0.3);
+  border-bottom: 2px solid darken($header-color, 10%);
+  white-space: nowrap;
+}
+
+.btn.large {
+  padding: $big-padding;
+  @include mobile {
+    padding: $mobile-big-padding;
+  }
+}

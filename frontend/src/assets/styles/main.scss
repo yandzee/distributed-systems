@@ -1,0 +1,34 @@
+@import "global.scss";
+@import "vars.scss";
+@import "widgets.scss";
+
+.layout {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  .tasks {
+    .task {
+      display: flex;
+      flex-direction: row;
+      min-width: 300px;
+      border: 1px solid $darkest;
+      margin-bottom: 1px;
+
+      .status {
+        @extend .centrified;
+        border-right: 1px solid $darkest;
+        width: 70px;
+        height: 70px;
+      }
+
+      .label {
+        @extend .centrified;
+        justify-content: flex-start;
+        padding-left: 10px;
+      }
+    }
+  }
+}

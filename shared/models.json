@@ -1,0 +1,44 @@
+{
+  "syntax": "proto3",
+  "nested": {
+    "Result": {
+      "fields": {
+        "code": {
+          "type": "uint32",
+          "id": 1
+        },
+        "message": {
+          "type": "string",
+          "id": 2
+        }
+      }
+    },
+
+    "Task": {
+      "fields": {
+        "id": {
+          "type": "uint32",
+          "id": 1
+        },
+        "label": {
+          "type": "string",
+          "id": 2
+        },
+        "done": {
+          "type": "uint32",
+          "id": 3
+        }
+      }
+    },
+
+    "Tasks": {
+      "fields": {
+        "tasks": {
+          "rule": "repeated",
+          "type": "Task",
+          "id": 1
+        }
+      }
+    }
+  }
+}

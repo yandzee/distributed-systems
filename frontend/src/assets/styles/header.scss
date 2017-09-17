@@ -1,0 +1,65 @@
+@import "global.scss";
+@import "vars.scss";
+
+header {
+  z-index: 1000;
+  width: 100%;
+  height: $header-height;
+  @include mobile {
+    height: $mobile-header-height;
+  }
+  background: linear-gradient(to top, $header-color, $lighten-header);
+  box-shadow: 0 0px 20px -5px;
+
+  .logo { }
+
+  * {
+    color: white;
+  }
+}
+
+header .narrowed {
+  position: relative;
+  padding: 0 $default-padding 0 $default-padding;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  @include mobile {
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+  }
+}
+
+header .mobile-top {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  .burger {
+    display: none;
+    @include mobile {
+      display: block;
+    }
+  }
+}
+
+header .links {
+  display: flex;
+  flex-direction: row;
+  > div {
+    padding: 10px;
+  }
+
+  @include mobile {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    position: absolute;
+    top: $mobile-header-height;
+    left: 0;
+    background: $header-color;
+  }
+}
