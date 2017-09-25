@@ -1,5 +1,4 @@
-// Copyright 2017 Sourcerer, Inc. All Rights Reserved.
-// Author: Renat Tuktarov (renat@sourcerer.io)
+// Author: Renat Tuktarov (yandzeek@gmail.com)
 
 const App = require('./app');
 const logger = require('./logger')();

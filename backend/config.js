@@ -25,7 +25,7 @@ module.exports = {
       'timestamp': false
     },
     'test': {
-      'level': 'debug',
+      'level': 'error',
       'prettyPrint': true,
       'colorize': true,
       'silent': false,

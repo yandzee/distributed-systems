@@ -19,7 +19,6 @@ class Storage {
   async up() {
     this.setupDatabase();
     this.setupSchemes();
-    // await this.sanitizeDatabases();
     return this;
   }
 
@@ -33,14 +32,44 @@ class Storage {
   }
 
   async setupSchemes() {
+    await this.setupTaskTable();
+  }
+
+  async setupTaskTable() {
     const schema = this.db.schema.withSchema('public');
-    await schema.dropTableIfExists('tasks');
+    misc.dev && await schema.dropTableIfExists('tasks');
     await schema.createTableIfNotExists('tasks', table => {
       table.increments();
       table.string('label');
       table.boolean('done');
-      table.timestamps();
     });
+  }
+
+  // Operations on base
+  async invertTaskStatus(taskId) {
+    const idLimit = 2**31 - 1;
+    if (taskId > idLimit) return -1;
+    const raw = this.db.raw;
+    return await this.db('tasks')
+      .where({ id: taskId })
+      .update('done', raw('not "tasks".done'));
+  }
+
+  async getTasks() {
+    return await this.db('tasks');
+  }
+
+  async createTask(label) {
+    return await this.db('tasks').insert({
+      done: false,
+      label
+    }, 'id');
+  }
+
+  async deleteTask(taskId) {
+    return await this.db('tasks').where({
+      id: taskId
+    }).delete();
   }
 }
 

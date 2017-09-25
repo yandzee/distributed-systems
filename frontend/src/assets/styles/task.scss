@@ -2,12 +2,24 @@
 @import "vars.scss";
 
 $task-height: 40px;
+$task-border: 1px solid rgba($darkest, 0.3);
+
 
 .task {
-  height: $task-height;
-  border-radius: 2px;
   display: flex;
   flex-direction: row;
+  min-width: 300px;
+  border: $task-border;
+  margin-bottom: 1px;
+  height: $task-height;
+  border-radius: 2px;
+
+  .label {
+    @extend .centrified;
+    justify-content: flex-start;
+    padding-left: 10px;
+    flex: 1;
+  }
 
   > div {
     padding: 10px;
@@ -16,19 +28,15 @@ $task-height: 40px;
   .status {
     @extend .centrified;
     flex: 0 0 $task-height;
-    border-left: 1px solid $darkest;
+    border-left: $task-border;
     cursor: pointer;
 
     .done {
       color: green;
     }
 
-    .not-done {
+    .delete {
       color: red;
     }
-  }
-
-  .label {
-    flex: 1;
   }
 }

@@ -10,25 +10,17 @@
   align-items: center;
 
   .tasks {
-    .task {
+    .controls {
       display: flex;
-      flex-direction: row;
-      min-width: 300px;
-      border: 1px solid $darkest;
-      margin-bottom: 1px;
+      flex-direction: column;
+      align-items: stretch;
 
-      .status {
-        @extend .centrified;
-        border-right: 1px solid $darkest;
-        width: 70px;
-        height: 70px;
+      > div:not(:last-child) {
+        margin-bottom: 10px;
       }
-
-      .label {
-        @extend .centrified;
-        justify-content: flex-start;
-        padding-left: 10px;
-      }
+    }
+    .loading {
+      text-align: center;
     }
   }
 }

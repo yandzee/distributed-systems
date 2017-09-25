@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "ENV=testing mocha ./**/*.spec.js",
-    "debugtest": "ENV=testing mocha debug ./**/*.spec.js",
+    "debrun": "ENV=testing mocha debug ./**/*.spec.js",
     "devrun": "ENV=development nodemon $NODE_DEBUG_OPTION .",
-    "run": "nodemon ."
+    "start": "ENV=production node index.js"
   },
   "keywords": [],
   "author": "Tuktarov Renat",

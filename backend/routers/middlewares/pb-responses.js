@@ -1,3 +1,5 @@
+// Author: Renat Tuktarov (yandzeek@gmail.com)
+
 const pbModels = require ('../../../shared/pb-models');
 
 const buildMethod = (res, model) => {

@@ -5,28 +5,52 @@ const responses = require('../../shared/responses');
 const pbResponses = require('./middlewares/pb-responses');
 const pbDataParser = require('./middlewares/pb-data-parser');
 
-const tasks = [
-  { id: 1, label: 'Task 1', done: +false },
-  { id: 2, label: 'Task 2', done: +true },
-  { id: 3, label: 'Task 3', done: +true },
-  { id: 4, label: 'Task 4', done: +false },
-  { id: 5, label: 'Task 5', done: +true },
-];
-
 module.exports = (server, router) => {
+  const storage = server.storage;
+
   router.get('/', pbResponses, async (req, res) => {
+    const tasks = await storage.getTasks();
+
     res.tasks({ tasks }).end();
   });
 
-  const updateMids = [ pbResponses, pbDataParser('Task') ];
-  router.put('/', updateMids, async (req, res) => {
-    const task = tasks.find(t => t.id === req.task.id);
-    if (!task) {
-      return res.result(responses.noTaskFound).end();
-    }
+  const tasksMiddleware = [ pbResponses, pbDataParser('Task') ];
+  router.put('/', tasksMiddleware, async (req, res) => {
+    const taskId = req.task.id;
+    const rowsAffected = await storage.invertTaskStatus(taskId);
 
-    task.done = req.task.done;
-    res.result(responses.taskUpdated);
+    if (rowsAffected === 1) {
+      return res.taskResult({
+        result: responses.taskUpdated,
+        task: req.task
+      }).end();
+    }
+    return res.taskResult({
+      result: responses.noTaskFound,
+      task: req.task
+    }).end();
+  });
+
+  router.post('/', tasksMiddleware, async (req, res) => {
+    const taskId = await storage.createTask(req.task.label);
+
+    res.taskResult({
+      result: responses.taskCreated,
+      task: {
+        id: taskId,
+        label: req.task.label,
+        done: false
+      }
+    }).end();
+  });
+
+  router.delete('/:id', pbResponses, async (req, res) => {
+    logger.debug('about to delete task: ' + req.params.id);
+    await storage.deleteTask(req.params.id);
+    res.taskResult({
+      result: responses.taskDeleted,
+      task: req.task
+    }).end();
   });
 
   return router;

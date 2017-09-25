@@ -13,7 +13,11 @@ const parse = data => {
     to(modelName) {
       const model = models[modelName];
       const obj = model.decode(data);
-      return model.toObject(obj);
+      return model.toObject(obj, {
+        defaults: true,
+        arrays: true,
+        objects: true
+      });
     }
   };
 };

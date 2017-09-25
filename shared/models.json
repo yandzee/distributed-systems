@@ -39,6 +39,19 @@
           "id": 1
         }
       }
+    },
+
+    "TaskResult": {
+      "fields": {
+        "result": {
+          "type": "Result",
+          "id": 1
+        },
+        "task": {
+          "type": "Task",
+          "id": 2
+        }
+      }
     }
   }
 }

@@ -19,6 +19,7 @@ $mobile-big-padding: 15px 25px 15px 25px;
   box-shadow: 0 0 10px 0px rgba(0,0,0, 0.3);
   border-bottom: 2px solid darken($header-color, 10%);
   white-space: nowrap;
+  cursor: pointer;
 }
 
 .btn.large {
@@ -26,4 +27,24 @@ $mobile-big-padding: 15px 25px 15px 25px;
   @include mobile {
     padding: $mobile-big-padding;
   }
+}
+
+input:focus {
+  outline: none;
+
+  &::placeholder {
+    color: transparent;
+  }
+}
+
+.widget {
+  width: 100%;
+}
+
+input.widget {
+  font-size: 16px;
+  background: transparent;
+  border: none;
+  padding: 10px;
+  border-bottom: 1px solid rgba($darkest, 0.4);
 }
