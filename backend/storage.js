@@ -17,18 +17,20 @@ class Storage {
   }
 
   async up() {
-    this.setupDatabase();
-    this.setupSchemes();
+    await this.setupDatabase();
+    await this.setupSchemes();
     return this;
   }
 
   async setupDatabase() {
-    this.db = knex({
+    const db = await knex({
       client: 'pg',
       connection: process.env.DATABASE_URL || this.cfg,
       debug: misc.dev,
       pool: { min: 0, max: 100 }
     });
+    this.db = db;
+    return db;
   }
 
   async setupSchemes() {

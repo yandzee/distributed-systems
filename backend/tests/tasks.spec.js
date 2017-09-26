@@ -17,12 +17,12 @@ describe('/tasks endpoint', function() {
     const app = new App();
     const db = new Database();
 
+    this.app = app;
+    this.db = db;
+
     await app.up()
     await db.up();
     await db.clear();
-
-    this.app = app;
-    this.db = db;
   });
 
   after(async function() {

@@ -6,6 +6,7 @@ const config = require('../config').storage.test;
 class Database {
   constructor(storage) {
     this.storage = storage;
+    console.log(this.connectionConfig);
     this.client = new Client(this.connectionConfig);
   }
 
@@ -16,8 +17,8 @@ class Database {
       };
     } else return {
       host: config.host,
-      user: config.user,
-      password: config.password,
+      user: 'postgres',
+      password: '',
       database: config.database
     }
   }
@@ -45,7 +46,7 @@ class Database {
 
   async clear() {
     await this.client.query('delete from tasks');
-    await this.client.query('alter sequence tasks_id_seq restart 1');
+    await this.client.query('alter sequence if exists tasks_id_seq restart 1');
   }
 
   async up() {
