@@ -1,6 +1,9 @@
 {
   "name": "distributed-systems-server",
   "version": "1.0.0",
+  "engines": {
+    "node": "8.1.*"
+  },
   "description": "A backend for laboratory work on distributed systems",
   "main": "index.js",
   "scripts": {

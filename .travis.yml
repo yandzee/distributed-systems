@@ -21,29 +21,23 @@ jobs:
         - cd ..
 
     - stage: backend staging deployment
-      script: skip
       language: node_js
       node_js:
         - "node"
-      services:
-        - postgresql
+      script: skip
       env:
         - NODE_ENV=development
-      install:
+      before_deploy:
         - cd backend
         - npm install
         - cd ..
-      before_script:
-        - psql -c 'drop database if exists "distributed-systems-test"' -U postgres
-        - psql -c 'create database "distributed-systems-test"' -U postgres
-      before_deploy:
-        - cd backend
+
       deploy:
         provider: heroku
         api_key: '4109f1e0-54db-4d7e-8cad-7397329ab92c'
         app: ds-backend-staging
-      after_deploy:
-        - cd ..
+        run:
+          - "npm run-script heroku-start"
 
     - stage: frontend staging deployment
       install:
