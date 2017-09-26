@@ -14,6 +14,14 @@ class Database {
     });
   }
 
+  async setupTables() {
+    await this.client.query(`create table if not exists tasks (
+      id serial primary key,
+      label varchar,
+      done boolean
+    )`);
+  }
+
   async fill() {
     const tasks = [
       ['Task 1', 'f'],
@@ -34,6 +42,7 @@ class Database {
 
   async up() {
     await this.client.connect();
+    await this.setupTables();
   }
 
   async down() {

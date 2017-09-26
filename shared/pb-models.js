@@ -1,5 +1,4 @@
-// import protobuf from 'protobufjs'
-const protobuf = require('protobufjs');
+const protobuf = require('../backend/node_modules/protobufjs');
 const jsonModels = require('./models.json');
 
 const setupSchemes = function() {
