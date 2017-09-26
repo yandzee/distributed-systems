@@ -6,12 +6,20 @@ const config = require('../config').storage.test;
 class Database {
   constructor(storage) {
     this.storage = storage;
-    this.client = new Client({
+    this.client = new Client(this.connectionConfig);
+  }
+
+  get connectionConfig() {
+    if (process.env.DATABASE_URL) {
+      return {
+        connectionString: process.env.DATABASE_URL
+      };
+    } else return {
       host: config.host,
       user: config.user,
       password: config.password,
       database: config.database
-    });
+    }
   }
 
   async setupTables() {

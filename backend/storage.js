@@ -25,7 +25,7 @@ class Storage {
   async setupDatabase() {
     this.db = knex({
       client: 'pg',
-      connection: this.cfg,
+      connection: process.env.DATABASE_URL || this.cfg,
       debug: misc.dev,
       pool: { min: 0, max: 100 }
     });

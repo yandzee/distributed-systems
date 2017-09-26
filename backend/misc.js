@@ -2,7 +2,7 @@
 
 const path = require('path');
 
-const env = (process.env.ENV || '').toLowerCase();
+const env = (process.env.NODE_ENV || '').toLowerCase();
 const dev = env.search('dev') > -1;
 const prod = env.search('prod') > -1;
 const test = env.search('test') > -1;
