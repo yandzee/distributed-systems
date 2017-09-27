@@ -41,7 +41,7 @@ module.exports = {
     }
   },
   'server': {
-    'port': process.env.BACKEND_PORT || 3181
+    'port': process.env.PORT || 3181
   },
   'storage': {
     'test': {
