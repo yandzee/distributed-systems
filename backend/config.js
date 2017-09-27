@@ -1,4 +1,5 @@
 // Author: Renat Tuktarov (yandzeek@gmail.com)
+
 module.exports = {
   'logger': {
     'levels': {
@@ -40,7 +41,7 @@ module.exports = {
     }
   },
   'server': {
-    'port': 3181
+    'port': process.env.BACKEND_PORT || 3181
   },
   'storage': {
     'test': {
