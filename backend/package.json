@@ -7,10 +7,10 @@
   "description": "A backend for laboratory work on distributed systems",
   "main": "index.js",
   "scripts": {
-    "test": "ENV=testing mocha ./**/*.spec.js",
-    "debrun": "ENV=testing mocha debug ./**/*.spec.js",
-    "devrun": "ENV=development nodemon $NODE_DEBUG_OPTION .",
-    "start": "ENV=production node index.js",
+    "test": "NODE_ENV=testing mocha ./**/*.spec.js",
+    "debrun": "NODE_ENV=testing mocha debug ./**/*.spec.js",
+    "devrun": "NODE_ENV=development nodemon $NODE_DEBUG_OPTION .",
+    "start": "NODE_ENV=production node index.js",
     "heroku-start": "node index.js"
   },
   "keywords": [],

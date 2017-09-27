@@ -29,15 +29,10 @@ jobs:
         - NODE_ENV=development
       before_deploy:
         - cd backend
-        - npm install
-        - cd ..
-
       deploy:
         provider: heroku
         api_key: '4109f1e0-54db-4d7e-8cad-7397329ab92c'
         app: ds-backend-staging
-        run:
-          - "npm run-script heroku-start"
 
     - stage: frontend staging deployment
       install:

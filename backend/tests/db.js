@@ -6,7 +6,6 @@ const config = require('../config').storage.test;
 class Database {
   constructor(storage) {
     this.storage = storage;
-    console.log(this.connectionConfig);
     this.client = new Client(this.connectionConfig);
   }
 

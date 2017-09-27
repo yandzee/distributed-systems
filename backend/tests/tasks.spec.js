@@ -2,7 +2,7 @@
 
 const chai = require('chai');
 const chaiHttp = require('chai-http');
-const responses = require('../../shared/responses');
+const responses = require('../shared/responses');
 const binaryParser = require('./binary-parser');
 const pb = require('../../shared/pb');
 const Database = require('./db');
