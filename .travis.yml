@@ -50,5 +50,3 @@ jobs:
         provider: 'heroku'
         api_key: '4109f1e0-54db-4d7e-8cad-7397329ab92c'
         app: ds-frontend-staging
-        run:
-          - "python3 serve.py ./dist"
