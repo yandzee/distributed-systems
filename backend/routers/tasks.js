@@ -1,7 +1,7 @@
 // Author: Renat Tuktarov (yandzeek@gmail.com)
 
 const logger = require('../logger')();
-const responses = require('../../shared/responses');
+const responses = require('../shared/responses');
 const pbResponses = require('./middlewares/pb-responses');
 const pbDataParser = require('./middlewares/pb-data-parser');
 

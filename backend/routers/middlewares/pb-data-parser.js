@@ -1,4 +1,6 @@
-const pb = require('../../../shared/pb');
+// Author: Renat Tuktarov (yandzeek@gmail.com)
+
+const pb = require('../../shared/pb');
 
 module.exports = modelName => {
   const field = modelName.charAt(0).toLowerCase() + modelName.slice(1);
