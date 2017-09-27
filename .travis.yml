@@ -35,6 +35,9 @@ jobs:
         app: ds-backend-staging
 
     - stage: frontend staging deployment
+      language: node_js
+      node_js:
+        - "node"
       install:
         - cd frontend
         - npm install
@@ -42,9 +45,11 @@ jobs:
       script: skip
       before_deploy:
         - cd frontend
+        - npm run build
+        - cd ./dist
       deploy:
         provider: 'heroku'
         api_key: '4109f1e0-54db-4d7e-8cad-7397329ab92c'
         app: ds-frontend-staging
-      after_deploy:
-        - cd ..
+        run:
+          - "python3 -m http.server"
