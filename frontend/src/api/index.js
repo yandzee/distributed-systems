@@ -5,7 +5,7 @@
 import Vue from 'vue'
 import VueAxios from 'vue-axios'
 import axios from 'axios'
-import pb from '../../../shared/pb'
+import pb from '../shared/pb'
 import TaskOpResult from './task-op-result'
 
 import config from '@/config'

@@ -1,4 +1,4 @@
-const responses = require('../../../shared/responses');
+import responses from '../shared/responses'
 
 class TaskOpResult {
   constructor(result) {
